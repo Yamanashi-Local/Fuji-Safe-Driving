@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Safe Driving Guide | Mt. Fuji & Kawaguchiko Area</title>
+  <style>
+    :root {
+      --primary-color: #d9534f;
+      --secondary-color: #2c3e50;
+      --bg-color: #f4f7f6;
+      --card-bg: #ffffff;
+      --warning-bg: #fff3cd;
+      --emergency-bg: #fff5f5;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-color);
+      color: #333333;
+      line-height: 1.6;
+    }
+    header {
+      background-color: var(--secondary-color);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    header h1 { margin: 0 0 0.5rem 0; font-size: 1.8rem; }
+    header p { margin: 0; opacity: 0.9; }
+    .container { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
+    .alert-banner {
+      background-color: var(--warning-bg);
+      border-left: 6px solid #ffc107;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      font-weight: bold;
+      border-radius: 4px;
+      font-size: 1.1rem;
+      color: #856404;
+    }
+    .section-title {
+      border-bottom: 3px solid var(--secondary-color);
+      padding-bottom: 0.5rem;
+      margin-top: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--secondary-color);
+      font-size: 1.4rem;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media (min-width: 600px) {
+      .card-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 1.2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .card h3 {
+      margin-top: 0;
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.15rem;
+    }
+    .badge {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      white-space: nowrap;
+    }
+    .badge-blue { background-color: #0284c7; }
+    ul { padding-left: 1.2rem; margin: 0.5rem 0; }
+
+    /* Emergency Box */
+    .emergency-box {
+      background-color: var(--emergency-bg);
+      border: 3px solid #dc2626;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 1rem;
+      color: #1f2937;
+    }
+    .emergency-box h3 { color: #dc2626; margin-top: 0; font-size: 1.3rem; }
+    .emergency-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 0.8rem 0;
+      background: #ffffff;
+      padding: 0.8rem;
+      border-radius: 8px;
+      border: 1px solid #fca5a5;
+    }
+    .phone-badge {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ffffff;
+      background: #dc2626;
+      padding: 0.2rem 0.8rem;
+      border-radius: 6px;
+      min-width: 60px;
+      text-align: center;
+    }
+
+    /* Contact Form Styles */
+    .contact-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 0.4rem;
+      color: var(--secondary-color);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+    .submit-btn {
+      background-color: var(--secondary-color);
+      color: white;
+      border: none;
+      padding: 0.9rem 1.8rem;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.2s;
+    }
+    .submit-btn:hover {
+      background-color: #1a252f;
+    }
+
+    /* Quiz Styles */
+    .quiz-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
+    }
+    .options { display: flex; flex-direction: column; gap: 0.8rem; }
+    .option-btn {
+      background: #f0f4f8;
+      border: 2px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 0.8rem 1rem;
+      text-align: left;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .explanation { margin-top: 1rem; padding: 0.8rem; border-radius: 6px; display: none; }
+    .correct { background-color: #d1fae5; color: #065f46; border: 1px solid #34d399; }
+    .incorrect { background-color: #fee2e2; color: #991b1b; border: 1px solid #f87171; }
+    #score-board {
+      text-align: center;
+      background: var(--secondary-color);
+      color: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      display: none;
+      margin-top: 1.5rem;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #777;
+      font-size: 0.85rem;
+      border-top: 1px solid #ddd;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🗻 Drive Safely around Mt. Fuji & Kawaguchiko</h1>
+  <p>Essential Rules, Local Manners & Safety Guide for Foreign Drivers</p>
+</header>
+
+<div class="container">
+  <div class="alert-banner">
+    ⚠️ <strong>Keep Left!</strong> Japan uses left-hand traffic. Pay extra attention at intersections!
+  </div>
+
+  <!-- SECTION 1: Key Rules -->
+  <h2 class="section-title">1. Basic Traffic Rules in Japan</h2>
+  <div class="card-grid">
+    <div class="card">
+      <img src="stop-sign.jpg" alt="Japanese Stop Sign">
+      <h3><span class="badge">MUST STOP</span> "STOP" Signs in Japan</h3>
+      <p>Japanese STOP signs (<strong>止まれ - Tomare</strong>) are <strong>red triangles</strong> pointing down.</p>
+      <p>You MUST bring the vehicle to a full stop before the white limit line.</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="badge">MUST KNOW</span> Drive on the LEFT</h3>
+      <p>Always stay on the <strong>LEFT side</strong> of the road.</p>
+      <ul>
+        <li><strong>Right Turns:</strong> Be careful not to turn into the right lane of oncoming traffic.</li>
+        <li><strong>Controls:</strong> Turn indicators are often on the right side of the steering wheel.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SECTION 2: Local Guidelines in Yamanashi -->
+  <h2 class="section-title">2. Parking Rules & Local Conditions</h2>
+  <div class="card-grid">
+    <div class="card">
+      <h3><span class="badge">NO PARKING</span> Illegal Parking Prevention</h3>
+      <p><strong>Never park on narrow residential streets, roadside shoulders, or private property</strong> for taking photos.</p>
+      <ul>
+        <li>Stopping on local roads causes traffic jams and endangers residents.</li>
+        <li>Always use official pay parking lots or designated tourist parking.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3><span class="badge badge-blue">LOCAL ADVICE</span> Local Driving Environment</h3>
+      <p><strong>Narrow Roads:</strong> Local residential roads around Lake Kawaguchiko can be very narrow. Watch for pedestrians and cyclists.</p>
+      <p><strong>Winter Ice (Nov - Apr):</strong> Roads freeze overnight. Studless snow tires are required during winter.</p>
+      <p><strong>Wildlife:</strong> Watch out for deer crossing the road at night or early morning.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 3: Driving Etiquette -->
+  <h2 class="section-title">3. Japanese Driving Etiquette & Manners</h2>
+  <div class="card-grid">
+    <div class="card">
+      <h3><span class="badge badge-blue">ETIQUETTE</span> Narrow Road Courtesy</h3>
+      <p>When giving way on narrow roads, drivers often flash hazard lights briefly as a "thank you" gesture.</p>
+      <p>Avoid using the horn unless avoiding immediate danger (honking can be seen as aggressive).</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="badge badge-blue">ETIQUETTE</span> Emergency Vehicles</h3>
+      <p>If you hear a siren from an ambulance or police car, <strong>pull over to the left side of the road</strong> and stop to let them pass.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 4: Emergency Flow -->
+  <h2 class="section-title">4. What to Do in Case of an Accident</h2>
+  <div class="emergency-box">
+    <h3>🚨 In Case of an Accident or Injury</h3>
+    <p>Do NOT leave the scene. Japanese law requires reporting ALL accidents immediately.</p>
+
+    <div class="emergency-item">
+      <div class="phone-badge">110</div>
+      <div>
+        <strong>Call Police (110)</strong><br>
+        Report any traffic accident or damage. Free call from any phone.
+      </div>
+    </div>
+
+    <div class="emergency-item">
+      <div class="phone-badge">119</div>
+      <div>
+        <strong>Call Ambulance / Fire (119)</strong><br>
+        Call immediately if anyone is injured or needs medical help.
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: Quiz -->
+  <h2 class="section-title">5. Quick Driving Rules Quiz (5 Mins)</h2>
+
+  <div class="quiz-card" id="q1">
+    <div class="question-title">Q1. Which side of the road should you drive on in Japan?</div>
+    <div class="options">
+      <button class="option-btn" onclick="checkAnswer(1, false, this)">A) Right side</button>
+      <button class="option-btn" onclick="checkAnswer(1, true, this)">B) Left side</button>
+    </div>
+    <div class="explanation" id="exp-1"></div>
+  </div>
+
+  <div class="quiz-card" id="q2">
+    <div class="question-title">Q2. Can you park on the street for a quick photo near tourist spots?</div>
+    <div class="options">
+      <button class="option-btn" onclick="checkAnswer(2, false, this)">A) Yes, if it is only for 1 or 2 minutes</button>
+      <button class="option-btn" onclick="checkAnswer(2, true, this)">B) No, always use designated parking lots</button>
+    </div>
+    <div class="explanation" id="exp-2"></div>
+  </div>
+
+  <div class="quiz-card" id="q3">
+    <div class="question-title">Q3. What must you do before crossing a railway crossing (train tracks)?</div>
+    <div class="options">
+      <button class="option-btn" onclick="checkAnswer(3, false, this)">A) Pass through quickly if no train sound is heard</button>
+      <button class="option-btn" onclick="checkAnswer(3, true, this)">B) Come to a full stop and check both sides</button>
+    </div>
+    <div class="explanation" id="exp-3"></div>
+  </div>
+
+  <div class="quiz-card" id="q4">
+    <div class="question-title">Q4. What is the emergency phone number to call the police in Japan?</div>
+    <div class="options">
+      <button class="option-btn" onclick="checkAnswer(4, true, this)">A) 110</button>
+      <button class="option-btn" onclick="checkAnswer(4, false, this)">B) 911</button>
+    </div>
+    <div class="explanation" id="exp-4"></div>
+  </div>
+
+  <div id="score-board">
+    <h2>🎉 Quiz Completed!</h2>
+    <p id="score-text"></p>
+  </div>
+
+  <!-- SECTION 6: Contact & Feedback Form -->
+  <h2 class="section-title">6. Feedback & Inquiries</h2>
+  <div class="contact-card">
+    <p>Was this guide helpful? Do you have suggestions or questions about driving in Mt. Fuji & Kawaguchiko? Leave your message below!</p>
+    
+    <form action="https://formspree.io/f/xljgjwqq" method="POST">
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="John Doe" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Your Email Address</label>
+        <input type="email" id="email" name="email" placeholder="example@email.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="category">Subject</label>
+        <select id="category" name="category">
+          <option value="Feedback">General Feedback / Suggestion</option>
+          <option value="Question">Question about Traffic Rules</option>
+          <option value="Inquiry">Business / Tourist Association Contact</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Tell us your feedback or questions..." required></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Send Message ✉️</button>
+    </form>
+  </div>
+
+</div>
+
+<footer>
+  <p>© Safe Drive Fuji Campaign | Supporting Community Safety & Local Tourism</p>
+</footer>
+
+<script>
+  let score = 0;
+  let answeredCount = 0;
+  const totalQuestions = 4;
+
+  const explanations = {
+    1: { correct: "Correct! Vehicles drive on the LEFT side of the road in Japan.", incorrect: "Incorrect! In Japan, vehicles MUST keep to the LEFT side." },
+    2: { correct: "Correct! Never park on street shoulders or private property for quick photos. Always use official parking lots.", incorrect: "Incorrect! Quick street parking blocks local traffic and creates danger. Always use official parking lots." },
+    3: { correct: "Correct! In Japan, you MUST stop completely before railway tracks and check both left and right before proceeding.", incorrect: "Incorrect! You must stop completely at all train crossings in Japan." },
+    4: { correct: "Correct! The police emergency number in Japan is 110.", incorrect: "Incorrect! In Japan, the police number is 110 (911 will not work)." }
+  };
+
+  function checkAnswer(qNum, isCorrect, btnElement) {
+    const parent = btnElement.parentElement;
+    const buttons = parent.querySelectorAll('.option-btn');
+    buttons.forEach(btn => btn.disabled = true);
+
+    const expDiv = document.getElementById(`exp-${qNum}`);
+    expDiv.style.display = "block";
+
+    if (isCorrect) {
+      btnElement.style.backgroundColor = "#a7f3d0";
+      expDiv.className = "explanation correct";
+      expDiv.innerText = explanations[qNum].correct;
+      score++;
+    } else {
+      btnElement.style.backgroundColor = "#fecaca";
+      expDiv.className = "explanation incorrect";
+      expDiv.innerText = explanations[qNum].incorrect;
+    }
+
+    answeredCount++;
+    if (answeredCount === totalQuestions) {
+      setTimeout(showScore, 800);
+    }
+  }
+
+  function showScore() {
+    const scoreBoard = document.getElementById('score-board');
+    const scoreText = document.getElementById('score-text');
+    scoreText.innerText = `You scored ${score} out of ${totalQuestions}!`;
+    scoreBoard.style.display = "block";
+    scoreBoard.scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
