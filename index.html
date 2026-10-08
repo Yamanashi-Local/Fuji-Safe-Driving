@@ -206,6 +206,46 @@
       border-top: 1px solid #ddd;
       margin-top: 2rem;
     }
+
+/* Unique Road Rules Styling */
+.rules-category {
+  margin: 30px 0;
+}
+
+.rule-card {
+  background: #f8f9fa;
+  border-left: 4px solid #d9534f; /* 注意を促す赤〜オレンジライン */
+  padding: 18px 20px;
+  margin-bottom: 15px;
+  border-radius: 0 8px 8px 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.rule-badge {
+  display: inline-block;
+  background: #2c3e50;
+  color: #fff;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.rule-card h4 {
+  margin: 0 0 8px 0;
+  color: #1a252f;
+  font-size: 18px;
+}
+
+.rule-card p {
+  margin: 0;
+  color: #4A5568;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
   </style>
 </head>
 <body>
@@ -297,6 +337,29 @@
       </div>
     </div>
   </div>
+
+<!-- 日本特有の道路標示・信号ルール -->
+<div class="rules-category">
+  <h3>Unique Japanese Road Markings & Signals</h3>
+  
+  <div class="rule-card">
+    <div class="rule-badge">Road Marking</div>
+    <h4>Diamond Symbol on the Road (◇)</h4>
+    <p>A white diamond painted on the asphalt means <strong>"Pedestrian Crossing Ahead"</strong>. Slow down and be prepared to stop. In Japan, stopping for pedestrians waiting to cross at a non-signalized crosswalk is strictly enforced by police.</p>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-badge">Road Line</div>
+    <h4>Yellow Center Line vs. White Line</h4>
+    <p>A <strong>solid yellow center line</strong> strictly prohibits passing or overtaking other vehicles by crossing into the opposite lane. Only overtake if the line is a dashed white line and it is completely safe.</p>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-badge">Traffic Signal</div>
+    <h4>Green Arrow Signals (Controlled Turns)</h4>
+    <p>Even if the main traffic light is <strong>RED</strong>, you may proceed ONLY in the direction indicated by a green arrow underneath (e.g., turning left, turning right, or going straight).</p>
+  </div>
+</div>
 
   <!-- SECTION 5: Quiz -->
   <h2 class="section-title">5. Quick Driving Rules Quiz (5 Mins)</h2>
